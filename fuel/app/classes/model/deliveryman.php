@@ -9,6 +9,6 @@ class Model_Deliveryman extends \Orm\Model
 	);
 
 
-	protected static $_table_name = 'tbl_deliverymen';
+	protected static $_table_name = 'tbl_deliveryman';
 
 }

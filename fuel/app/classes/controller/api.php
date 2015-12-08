@@ -4,14 +4,7 @@ class Controller_Api extends Controller_Rest
 {
 
 	public function get_order($id){
-		/*{\"ORDERLINE_ID\":\"1234567890123\","
-				+ "\"CUSTOMER_NAME\":\"山田太郎\","
-				+ "\"CUSTOMER_TEL\":\"080-xxx-xxx\","
-				+ "\"ORDER_LIST\":["
-				+ "			{\"ITEM_NAME\":\"aaaa\",\"NUM\":2},"
-				+ "			{\"ITEM_NAME\":\"bbbb\",\"NUM\":3}"
-				+ "],"
-				+ "\"DESTINATION\":\"大阪府大阪市天王寺区上本町6-8-4\"}";*/
+
 		$order = Model_Order::find($id);
 		$orderlines = $order->orderline;
 		$member = $order->member;
@@ -30,6 +23,20 @@ class Controller_Api extends Controller_Rest
 		}
 
 		return $this->response($result);
+	}
+
+	public function post_position(){
+		$deliveryman = Model_Deliveryman::find(1);
+		$deliveryman->lat = $_POST['lat'];
+		$deliveryman->long = $_POST['long'];
+		$deliveryman->save();
+		return array($_POST['lat'],$_POST['long']);
+	}
+
+	public function post_orderstatus($id){
+		$order = Model_Order::find($id);
+		$order->status = true;
+		$order->save();
 	}
 
 }
