@@ -8,10 +8,10 @@ class Model_Item extends \Orm\Model
 		'name',
 		'phonetic',
 		'category',
-		'unit_place',
-		'unit_place_s',
-		'unit_place_m',
-		'unit_place_l',
+		'unit_price',
+		'unit_price_s',
+		'unit_price_m',
+		'unit_price_l',
 		'explanatory',
 	);
 
