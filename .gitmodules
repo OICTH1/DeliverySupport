@@ -1,0 +1,3 @@
+[submodule "fuel/packages/e"]
+	path = fuel/packages/e
+	url = git://github.com/fuel/email.git
