@@ -42,4 +42,24 @@ class Model_Order extends \Orm\Model
 		),
 	);
 
+
+	public static function getDetail($order_id){
+		$order = Model_Order::find($order_id);
+		foreach ($order->orderline as $orderline) {
+			$detail['orderline'][] = array(
+				'name' => $orderline->item->name,
+				'size' => $orderline->size,
+				'num' => $orderline->num,
+			);
+		}
+
+		$detail['customer'] = array(
+				'name' => $order->member->name,
+				'tel' => $order->member->tel,
+		);
+
+		$detail['address'] = $order->destination;
+
+		return $detail;
+	}
 }

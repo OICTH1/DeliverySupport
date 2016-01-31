@@ -9,7 +9,7 @@ class Controller_Client_Auth extends Controller_Template
         if(isset($_POST['input_staffNo'])){
                 $staffNo = $_POST['input_staffNo'];
                 if(!empty($staff = Model_Staff::isExist($staffNo))){
-                    Session::set(self::LOGIN,$staff->staffno);
+                    Session::set(self::LOGIN,$staff->id);
                     return Response::redirect('client');
                 } else {
                     $this->template->title = 'ログイン';

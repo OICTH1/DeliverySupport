@@ -33,4 +33,19 @@ class Model_Staff extends \Orm\Model
 		return null;
 	}
 
+	const DELIVERYID_LIST = 'deliveryid_list';
+	public function getDeliveryList(){
+		$deliveryid_list = array(1,7,8);//Session::get(self::DELIVERYID_LIST);
+		$deliverylist = array();
+		foreach ((array)$deliveryid_list as $idx => $deliveryid) {
+			$order = Model_Order::find($deliveryid);
+			$deliverylist[] = array(
+				'index' => $idx,
+				'orderid' => $deliveryid,
+				'address' => $order->destination,
+			);
+		}
+		return $deliverylist;
+	}
+
 }
