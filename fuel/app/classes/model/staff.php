@@ -35,7 +35,7 @@ class Model_Staff extends \Orm\Model
 
 	const DELIVERYID_LIST = 'deliveryid_list';
 	public function getDeliveryList(){
-		$deliveryid_list = array(1,7,8);//Session::get(self::DELIVERYID_LIST);
+		$deliveryid_list = Session::get(self::DELIVERYID_LIST);
 		$deliverylist = array();
 		foreach ((array)$deliveryid_list as $idx => $deliveryid) {
 			$order = Model_Order::find($deliveryid);

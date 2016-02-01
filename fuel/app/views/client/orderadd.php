@@ -31,7 +31,12 @@
         $('#select_image').change(renderImage);
         qrcode.callback = function(result) {
             if(isFinite(0+result)){
-                alert(result);
+                var order_id = 0+result;
+                var url = '/DeliverySupport/api/addOrder';
+                var data = {order_id:order_id};
+                $.post(url,data,function(res){
+                    alert('注文番号:'+ order_id + 'を追加しました。');
+                });
             } else {
                 alert('間違ったQRコードです。');
             }
@@ -41,5 +46,37 @@
         });
  </script>
  <script type="text/javascript">
+    //デバッグ用
+    (function(i){
+            var order_id = i;
+            var url = '/DeliverySupport/api/addOrder';
+            var data = {order_id:order_id};
+
+            $.post(url,data,function(res){
+                alert('注文番号:'+ order_id + 'の配達が完了しました。');
+                console.log(res);
+                (function(i){
+                        var order_id = i;
+                        var url = '/DeliverySupport/api/addOrder';
+                        var data = {order_id:order_id};
+
+                        $.post(url,data,function(res){
+                            alert('注文番号:'+ order_id + 'の配達が完了しました。');
+                            console.log(res);
+                            (function(i){
+                                    var order_id = i;
+                                    var url = '/DeliverySupport/api/addOrder';
+                                    var data = {order_id:order_id};
+
+                                    $.post(url,data,function(res){
+                                        alert('注文番号:'+ order_id + 'の配達が完了しました。');
+                                        console.log(res);
+                                    });
+                            })(8);
+                        });
+                })(7);
+            });
+    })(1);
+
 
  </script>
