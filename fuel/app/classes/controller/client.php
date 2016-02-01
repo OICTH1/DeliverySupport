@@ -28,7 +28,8 @@ class Controller_Client extends Controller_Template
     }
 
     public function action_add(){
-
+        $this->template->title = '詳細';
+        $this->template->content = View::forge('client/orderadd');
     }
 
     //test code
